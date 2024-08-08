@@ -1,0 +1,66 @@
+{
+    "name": "gammamatrix/playground-directory-api",
+    "description": "Playground: Provides an API, without a UI for interacting with Directory, a Playground System for Laravel applications",
+    "keywords": [
+        "directory",
+        "gammamatrix",
+        "laravel",
+        "playground"
+    ],
+    "homepage": "https://github.com/gammamatrix/playground-directory-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Postlethwaite",
+            "email": "jeremy.postlethwaite@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "gammamatrix/playground": "*",
+        "gammamatrix/playground-auth": "*",
+        "gammamatrix/playground-http": "*",
+        "gammamatrix/playground-directory": "*"
+    },
+    "require-dev": {
+        "gammamatrix/playground-test": "*",
+        "laravel/sanctum": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Playground\\Directory\\Api\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Feature\\Playground\\Directory\\Api\\": "tests/Feature/",
+            "Tests\\Unit\\Playground\\Directory\\Api\\": "tests/Unit/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "gammamatrix/*": "source",
+            "*": "dist"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "73.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Playground\\Directory\\Api\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max",
+        "cloc": "cloc --exclude-dir=node_modules,output,vendor .",
+        "format": "vendor/bin/php-cs-fixer fix",
+        "test": "vendor/bin/testbench package:test"
+    }
+}

@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Sublocation
+  summary: 'Create a sublocation form.'
+  operationId: create_sublocation
+  responses:
+    200:
+      description: 'The create sublocation information.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../models/sublocation.yml
+              meta:
+                type: object
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden

@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Location
+  summary: 'Create a location form.'
+  operationId: create_location
+  responses:
+    200:
+      description: 'The create location information.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../models/location.yml
+              meta:
+                type: object
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden

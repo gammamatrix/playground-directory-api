@@ -1,0 +1,30 @@
+parameters:
+  -
+    in: path
+    name: id
+    required: true
+    description: 'The location id.'
+    schema:
+      type: string
+      format: uuid
+get:
+  tags:
+    - Location
+  summary: 'Edit a location form.'
+  operationId: edit_location
+  responses:
+    200:
+      description: 'The edit location information.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../models/location.yml
+              meta:
+                type: object
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
