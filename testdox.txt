@@ -1,8 +1,39 @@
 Command (Tests\Feature\Playground\Directory\Api\Console\Commands\About\Command)
  [x] Command about displays package information and succeed
 
+Create Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\CreateRequest)
+ [x] Request instance
+
+Create Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\CreateRequest)
+ [x] Request instance
+
+Destroy Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\DestroyRequest)
+ [x] Request instance
+
+Destroy Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\DestroyRequest)
+ [x] Request instance
+
+Edit Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\EditRequest)
+ [x] Request instance
+
+Edit Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\EditRequest)
+ [x] Request instance
+
+Index Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\IndexRequest)
+ [x] Request instance
+
+Index Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\IndexRequest)
+ [x] Request instance
+
 Instance (Tests\Feature\Playground\Directory\Api\Http\Requests\FormRequest\Instance)
  [x] FormRequest authorize with admin
+
+Instance (Tests\Unit\Playground\Directory\Api\Http\Requests\FormRequest\Instance)
+ [x] FormRequest authorize without user
+ [x] RULES is empty by default
+ [x] UserHasAdminPrivileges without user
+ [x] UserHasAdminPrivileges with admin
+ [x] UserHasAdminPrivileges with default laravel user
 
 Instance (Tests\Unit\Playground\Directory\Api\ServiceProvider\Instance)
  [x] Version matches
@@ -56,11 +87,39 @@ Location Route (Tests\Feature\Playground\Directory\Api\Http\Controllers\Playgrou
  [x] Json restore revision as user and get denied
  [x] Json destroy as user and get denied and no force delete allowed
 
+Lock Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\LockRequest)
+ [x] Request instance
+
+Lock Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\LockRequest)
+ [x] Request instance
+
 Policy (Tests\Unit\Playground\Directory\Api\Policies\LocationPolicy\Policy)
  [x] Policy instance
 
 Policy (Tests\Unit\Playground\Directory\Api\Policies\SublocationPolicy\Policy)
  [x] Policy instance
+
+Restore Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\RestoreRequest)
+ [x] Request instance
+
+Restore Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\RestoreRequest)
+ [x] Request instance
+
+Show Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\ShowRequest)
+ [x] Request instance
+
+Show Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\ShowRequest)
+ [x] Request instance
+
+Store Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\StoreRequest)
+ [x] Request instance
+ [x] StoreRequest rules with optional revisions disabled
+ [x] StoreRequest rules with optional revisions enabled
+
+Store Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\StoreRequest)
+ [x] Request instance
+ [x] StoreRequest rules with optional revisions disabled
+ [x] StoreRequest rules with optional revisions enabled
 
 Sublocation Route (Tests\Feature\Playground\Directory\Api\Http\Controllers\Playground\SublocationRoute)
  [x] Json guest cannot see info
@@ -107,4 +166,20 @@ Sublocation Route (Tests\Feature\Playground\Directory\Api\Http\Controllers\Playg
  [x] Json destroy as admin and succeed and ignore redirect
  [x] Json restore revision as user and get denied
  [x] Json destroy as user and get denied and no force delete allowed
+
+Unlock Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\UnlockRequest)
+ [x] Request instance
+
+Unlock Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\UnlockRequest)
+ [x] Request instance
+
+Update Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Location\UpdateRequest)
+ [x] Request instance
+ [x] UpdateRequest rules with optional revisions disabled
+ [x] UpdateRequest rules with optional revisions enabled
+
+Update Request (Tests\Unit\Playground\Directory\Api\Http\Requests\Sublocation\UpdateRequest)
+ [x] Request instance
+ [x] UpdateRequest rules with optional revisions disabled
+ [x] UpdateRequest rules with optional revisions enabled
 

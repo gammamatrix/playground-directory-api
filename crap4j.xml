@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-08 22:00:46</timestamp>
+  <timestamp>2024-08-09 01:13:26</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>60</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>149.22</totalCrap>
+    <totalCrap>149</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -325,9 +325,9 @@
       <methodName>authorize</methodName>
       <methodSignature>authorize(): bool</methodSignature>
       <fullMethod>authorize(): bool</fullMethod>
-      <crap>2.06</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>75</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -347,9 +347,9 @@
       <methodName>userHasAdminPrivileges</methodName>
       <methodSignature>userHasAdminPrivileges(Illuminate\Contracts\Auth\Authenticatable $user): bool</methodSignature>
       <fullMethod>userHasAdminPrivileges(Illuminate\Contracts\Auth\Authenticatable $user): bool</fullMethod>
-      <crap>3.04</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>83.33</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -369,9 +369,9 @@
       <methodName>rules</methodName>
       <methodSignature>rules(): array</methodSignature>
       <fullMethod>rules(): array</fullMethod>
-      <crap>2.03</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>80</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -391,9 +391,9 @@
       <methodName>rules</methodName>
       <methodSignature>rules(): array</methodSignature>
       <fullMethod>rules(): array</fullMethod>
-      <crap>2.03</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>80</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -424,9 +424,9 @@
       <methodName>rules</methodName>
       <methodSignature>rules(): array</methodSignature>
       <fullMethod>rules(): array</fullMethod>
-      <crap>2.03</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>80</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -446,9 +446,9 @@
       <methodName>rules</methodName>
       <methodSignature>rules(): array</methodSignature>
       <fullMethod>rules(): array</fullMethod>
-      <crap>2.03</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>80</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
