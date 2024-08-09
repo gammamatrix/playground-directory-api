@@ -150,6 +150,7 @@ class LocationTestCase extends TestCase
         'introduction',
         'content',
         'summary',
+        'phone',
         'icon',
         'image',
         'avatar',

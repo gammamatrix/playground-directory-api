@@ -289,6 +289,10 @@ properties:
     description: 'The summary of the location revision. Allows HTML.'
     type: string
     nullable: true
+  phone:
+    description: 'The phone of the location revision.'
+    type: string
+    nullable: true
   address:
     description: 'JSON: address'
     type: object

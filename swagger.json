@@ -432,6 +432,11 @@
                     "type": "string",
                     "nullable": true
                   },
+                  "phone": {
+                    "description": "The phone of the location.",
+                    "type": "string",
+                    "nullable": true
+                  },
                   "address": {
                     "description": "JSON: address",
                     "type": "object",
@@ -882,6 +887,11 @@
                   },
                   "summary": {
                     "description": "The summary of the location. Allows HTML.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "phone": {
+                    "description": "The phone of the location.",
                     "type": "string",
                     "nullable": true
                   },
@@ -1784,6 +1794,11 @@
                     "type": "string",
                     "nullable": true
                   },
+                  "phone": {
+                    "description": "The phone of the sublocation.",
+                    "type": "string",
+                    "nullable": true
+                  },
                   "address": {
                     "description": "JSON: address",
                     "type": "object",
@@ -2240,6 +2255,11 @@
                   },
                   "summary": {
                     "description": "The summary of the sublocation. Allows HTML.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "phone": {
+                    "description": "The phone of the sublocation.",
                     "type": "string",
                     "nullable": true
                   },
@@ -3104,6 +3124,11 @@
             "type": "string",
             "nullable": true
           },
+          "phone": {
+            "description": "The phone of the location.",
+            "type": "string",
+            "nullable": true
+          },
           "address": {
             "description": "JSON: address",
             "type": "object",
@@ -3508,6 +3533,11 @@
             "type": "string",
             "nullable": true
           },
+          "phone": {
+            "description": "The phone of the location revision.",
+            "type": "string",
+            "nullable": true
+          },
           "address": {
             "description": "JSON: address",
             "type": "object",
@@ -3909,6 +3939,11 @@
           },
           "summary": {
             "description": "The summary of the sublocation. Allows HTML.",
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "description": "The phone of the sublocation.",
             "type": "string",
             "nullable": true
           },
@@ -4319,6 +4354,11 @@
           },
           "summary": {
             "description": "The summary of the sublocation revision. Allows HTML.",
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "description": "The phone of the sublocation revision.",
             "type": "string",
             "nullable": true
           },

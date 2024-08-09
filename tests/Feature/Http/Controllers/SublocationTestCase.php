@@ -151,6 +151,7 @@ class SublocationTestCase extends TestCase
         'introduction',
         'content',
         'summary',
+        'phone',
         'icon',
         'image',
         'avatar',

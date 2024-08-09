@@ -91,6 +91,7 @@ class RevisionsRequest extends BaseIndexRequest
         'introduction' => ['column' => 'introduction', 'label' => 'Introduction', 'type' => 'string', 'nullable' => true],
         'content' => ['column' => 'content', 'label' => 'Content', 'type' => 'mediumText', 'nullable' => true],
         'summary' => ['column' => 'summary', 'label' => 'Summary', 'type' => 'mediumText', 'nullable' => true],
+        'phone' => ['column' => 'phone', 'label' => 'Phone', 'type' => 'string', 'nullable' => true],
     ];
 
     /**
@@ -176,6 +177,7 @@ class RevisionsRequest extends BaseIndexRequest
         'introduction' => ['column' => 'introduction', 'label' => 'Introduction', 'type' => 'string'],
         'content' => ['column' => 'content', 'label' => 'Content', 'type' => 'string'],
         'summary' => ['column' => 'summary', 'label' => 'Summary', 'type' => 'string'],
+        'phone' => ['column' => 'phone', 'label' => 'Phone', 'type' => 'string'],
         'icon' => ['column' => 'icon', 'label' => 'Icon', 'type' => 'string'],
         'image' => ['column' => 'image', 'label' => 'Image', 'type' => 'string'],
         'avatar' => ['column' => 'avatar', 'label' => 'Avatar', 'type' => 'string'],

@@ -255,6 +255,10 @@ properties:
     description: 'The summary of the sublocation. Allows HTML.'
     type: string
     nullable: true
+  phone:
+    description: 'The phone of the sublocation.'
+    type: string
+    nullable: true
   address:
     description: 'JSON: address'
     type: object

@@ -88,6 +88,7 @@ class UpdateRequest extends BaseUpdateRequest
         'introduction' => ['string'],
         'content' => ['nullable', 'string'],
         'summary' => ['nullable', 'string'],
+        'phone' => ['nullable', 'string'],
         'icon' => ['string'],
         'image' => ['string'],
         'avatar' => ['string'],

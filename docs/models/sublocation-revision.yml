@@ -294,6 +294,10 @@ properties:
     description: 'The summary of the sublocation revision. Allows HTML.'
     type: string
     nullable: true
+  phone:
+    description: 'The phone of the sublocation revision.'
+    type: string
+    nullable: true
   address:
     description: 'JSON: address'
     type: object
