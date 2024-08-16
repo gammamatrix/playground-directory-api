@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Directory Routes: Sublocation
+| Directory API Routes: Sublocation
 |--------------------------------------------------------------------------
 |
 |

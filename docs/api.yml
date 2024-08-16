@@ -1,9 +1,8 @@
 openapi: 3.0.3
 info:
-  title: 'Playground Directory'
-  description: 'Playground: Provide the Directory models for the Playground Directory System.'
-  termsOfService: ''
-  version: ''
+  title: 'Playground Directory API'
+  description: 'Playground: Provides an API, without a UI for interacting with Playground Directory, a Directory System for Laravel applications.'
+  version: 73.0.0
 externalDocs:
   url: 'https://gammamatrix-playground.readthedocs.io/en/develop/components/directory.html'
   description: 'Read the Docs: Playground Directory Packages'

@@ -60,7 +60,7 @@ class LocationController extends Controller
     /**
      * Edit the Location resource in storage.
      *
-     * @route GET /api/directory/locations/edit playground.directory.api.locations.edit
+     * @route GET /api/directory/locations/edit/{location} playground.directory.api.locations.edit
      */
     public function edit(
         Location $location,

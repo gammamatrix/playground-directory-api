@@ -23,7 +23,7 @@
     "playground": true,
     "revision": true,
     "package_name": "Playground: Directory API",
-    "package_description": "Playground: Provides an API, without a UI for interacting with Directory, a Playground System for Laravel applications",
+    "package_description": "Playground: Provides an API, without a UI for interacting with Playground Directory, a Directory System for Laravel applications.",
     "package_homepage": "https://github.com/gammamatrix/playground-directory-api",
     "package_keywords": [
         "directory",

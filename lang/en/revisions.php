@@ -6,15 +6,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | CMS Revision Language Lines
+    | Directory Revision Language Lines
     |--------------------------------------------------------------------------
     |
     */
 
     'optional' => 'Revisions are optional.',
 
-    'locations.enabled' => 'Revisions are enabled for pages.',
-    'pages.disabled' => 'Revisions are disabled for pages.',
+    'locations.enabled' => 'Revisions are enabled for locations.',
+    'locations.disabled' => 'Revisions are disabled for locations.',
 
     'sublocations.enabled' => 'Revisions are enabled for sublocations.',
     'sublocations.disabled' => 'Revisions are disabled for sublocations.',

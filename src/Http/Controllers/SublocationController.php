@@ -60,7 +60,7 @@ class SublocationController extends Controller
     /**
      * Edit the Sublocation resource in storage.
      *
-     * @route GET /api/directory/sublocations/edit playground.directory.api.sublocations.edit
+     * @route GET /api/directory/sublocations/edit/{sublocation} playground.directory.api.sublocations.edit
      */
     public function edit(
         Sublocation $sublocation,

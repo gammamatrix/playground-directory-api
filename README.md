@@ -35,7 +35,6 @@ Documentation
 - Preview [swagger.json on the Swagger Editor UI.](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gammamatrix/playground-directory-api/develop/swagger.json)
 - Preview [swagger.json on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-directory-api/develop/swagger.json)
 
-
 ## Installation
 
 You can install the package via composer:
@@ -50,6 +49,11 @@ All options are disabled by default.
 
 See the contents of the published config file: [config/playground-directory-api.php](config/playground-directory-api.php)
 
+You can publish the config file with:
+```bash
+php artisan vendor:publish --provider=Playground\Directory\Api\ServiceProvider" --tag="playground-config"
+```
+
 ## Cloc
 
 ```sh
@@ -59,22 +63,22 @@ composer cloc
 ```
 ➜  playground-directory-api git:(develop) ✗ composer cloc
 > cloc --exclude-dir=node_modules,output,vendor .
-     173 text files.
+     195 text files.
      121 unique files.
-      54 files ignored.
+      76 files ignored.
 
-github.com/AlDanial/cloc v 1.98  T=0.21 s (579.5 files/s, 112864.5 lines/s)
+github.com/AlDanial/cloc v 1.98  T=0.24 s (504.6 files/s, 98625.1 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                             5              0              0          14485
-PHP                             81            689           1139           3865
-YAML                            28              5              0           3028
+JSON                             5              0              0          14524
+PHP                             81            689           1139           3883
+YAML                            28              5              0           3051
 XML                              3              0              7            215
-Markdown                         3             38              0             81
+Markdown                         3             37              0             85
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                           121            735           1146          21686
+SUM:                           121            734           1146          21770
 -------------------------------------------------------------------------------
 ```
 
@@ -107,7 +111,6 @@ composer test --parallel
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
 
 ## License
 

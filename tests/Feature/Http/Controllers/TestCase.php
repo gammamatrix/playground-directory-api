@@ -47,7 +47,7 @@ class TestCase extends BaseTestCase
         'module_slug' => 'directory',
         'privilege' => 'playground-directory-api:',
         'table' => '',
-        'view' => 'playground.directory.api::',
+        'view' => 'playground-directory-api::',
     ];
 
     /**

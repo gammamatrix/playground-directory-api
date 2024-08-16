@@ -1,6 +1,6 @@
 {
     "name": "gammamatrix/playground-directory-api",
-    "description": "Playground: Provides an API, without a UI for interacting with Directory, a Playground System for Laravel applications",
+    "description": "Playground: Provides an API, without a UI for interacting with Playground Directory, a Directory System for Laravel applications.",
     "keywords": [
         "directory",
         "gammamatrix",
