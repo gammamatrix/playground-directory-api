@@ -1,0 +1,23 @@
+{
+    "class": "PolicyTest",
+    "config": "playground-directory-api",
+    "extends": "",
+    "fqdn": "Tests/Unit/Playground/Directory/Api/Policies/LocationPolicy/PolicyTest",
+    "model": "Location",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "PolicyTest",
+    "namespace": "Tests/Unit/Playground/Directory/Api/Policies/LocationPolicy",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "unit",
+    "type": "policy",
+    "uses": [
+        "Tests/Unit/Playground/Directory/Api/TestCase",
+        "Playground/Directory/Api/Policies/LocationPolicy"
+    ],
+    "models": [],
+    "package_providers": []
+}

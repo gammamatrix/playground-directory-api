@@ -1,0 +1,22 @@
+{
+    "class": "UnlockRequest",
+    "config": "playground-directory-api",
+    "fqdn": "Playground/Directory/Api/Http/Requests/Sublocation/Sublocation",
+    "model": "Sublocation",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "Sublocation",
+    "namespace": "Playground/Directory/Api",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "abstract": false,
+    "pagination": false,
+    "playground": false,
+    "store": false,
+    "slug": false,
+    "type": "unlock",
+    "extends": "FormRequest",
+    "extends_use": "Playground/Directory/Api/Http/Requests/FormRequest",
+    "models": []
+}

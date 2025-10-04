@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Directory\Api\Http\Requests\Sublocation;
 
 use Playground\Http\Requests\IndexRequest as BaseIndexRequest;

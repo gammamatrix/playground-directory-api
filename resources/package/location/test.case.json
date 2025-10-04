@@ -1,0 +1,22 @@
+{
+    "class": "LocationTestCase",
+    "config": "playground-directory-api",
+    "extends": "TestCase",
+    "fqdn": "Tests/Feature/Playground/Directory/Api/Http/Controllers/LocationTestCase",
+    "model": "Location",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "LocationTestCase",
+    "namespace": "Tests/Feature/Playground/Directory/Api/Http/Controllers",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-api-controller-model-case",
+    "uses": [],
+    "models": {
+        "Location": "resources/configurations/playground-directory/model.location.json"
+    },
+    "package_providers": []
+}

@@ -1,0 +1,17 @@
+{
+    "class": "LocationRevisionCollection",
+    "config": "playground-directory-api",
+    "fqdn": "Playground/Directory/Api/Http/Resources/LocationRevisionCollection",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "LocationRevisionCollection",
+    "namespace": "Playground/Directory/Api",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "collection": true,
+    "model": "LocationRevision",
+    "model_fqdn": "Playground/Directory/Models/LocationRevision",
+    "model_slug": "location-revision",
+    "type": "",
+    "models": []
+}

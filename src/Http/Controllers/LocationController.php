@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Directory\Api\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
 use Playground\Directory\Api\Http\Requests;
 use Playground\Directory\Api\Http\Resources;
 use Playground\Directory\Models\Location;
@@ -46,14 +47,14 @@ class LocationController extends Controller
         Requests\Location\CreateRequest $request
     ): JsonResponse|Resources\Location {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
+        $validated = $request->validated();
 
         $location = new Location($validated);
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -66,8 +67,11 @@ class LocationController extends Controller
         Location $location,
         Requests\Location\EditRequest $request
     ): JsonResponse|Resources\Location {
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -108,7 +112,7 @@ class LocationController extends Controller
         Requests\Location\LockRequest $request
     ): JsonResponse|Resources\Location {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
@@ -120,8 +124,8 @@ class LocationController extends Controller
 
         $location->save();
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -134,11 +138,20 @@ class LocationController extends Controller
         Requests\Location\IndexRequest $request
     ): JsonResponse|Resources\LocationCollection {
 
-        $user = $request->user();
+        $packageInfo = $this->packageInfo();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = Location::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Location::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -172,7 +185,7 @@ class LocationController extends Controller
 
         $paginator->appends($validated);
 
-        return (new Resources\LocationCollection($paginator))->response($request);
+        return new Resources\LocationCollection($paginator)->response($request);
     }
 
     /**
@@ -185,16 +198,16 @@ class LocationController extends Controller
         Requests\Location\RestoreRequest $request
     ): JsonResponse|Resources\Location {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
-        if ($user?->id) {
-            $location->modified_by_id = $user->id;
-        }
+        $location->modified_by_id = $user?->id;
 
         $location->restore();
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -207,6 +220,9 @@ class LocationController extends Controller
         LocationRevision $location_revision,
         Requests\Location\RestoreRevisionRequest $request
     ): JsonResponse|Resources\Location {
+
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         /**
@@ -230,8 +246,8 @@ class LocationController extends Controller
 
         $location->save();
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -244,20 +260,11 @@ class LocationController extends Controller
         LocationRevision $location_revision,
         Requests\Location\ShowRevisionRequest $request
     ): JsonResponse|Resources\LocationRevision {
-        $validated = $request->validated();
 
-        $user = $request->user();
+        $packageInfo = $this->packageInfo();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => $location_revision->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
-        ];
-
-        return (new Resources\LocationRevision($location_revision))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\LocationRevision($location_revision)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -270,8 +277,20 @@ class LocationController extends Controller
         Location $location,
         Requests\Location\RevisionsRequest $request
     ): JsonResponse|Resources\LocationRevisionCollection {
+
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
         $query = $location->revisions();
@@ -307,8 +326,8 @@ class LocationController extends Controller
 
         $paginator->appends($validated);
 
-        return (new Resources\LocationRevisionCollection($paginator))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\LocationRevisionCollection($paginator)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -317,7 +336,12 @@ class LocationController extends Controller
      */
     public function saveRevision(Location $location): LocationRevision
     {
-        $revision = new LocationRevision($location->toArray());
+        /**
+         * @var array<string, mixed> $data
+         */
+        $data = $location->toArray();
+
+        $revision = new LocationRevision($data);
 
         $revision->created_by_id = $location->created_by_id;
         $revision->modified_by_id = $location->modified_by_id;
@@ -345,8 +369,11 @@ class LocationController extends Controller
         Location $location,
         Requests\Location\ShowRequest $request
     ): JsonResponse|Resources\Location {
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -358,6 +385,9 @@ class LocationController extends Controller
     public function store(
         Requests\Location\StoreRequest $request
     ): Response|JsonResponse|Resources\Location {
+
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -368,8 +398,8 @@ class LocationController extends Controller
 
         $location->save();
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request)->setStatusCode(201);
     }
 
@@ -383,20 +413,18 @@ class LocationController extends Controller
         Requests\Location\UnlockRequest $request
     ): JsonResponse|Resources\Location {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
         $location->locked = false;
 
-        if ($user?->id) {
-            $location->modified_by_id = $user->id;
-        }
+        $location->modified_by_id = $user?->id;
 
         $location->save();
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -410,20 +438,20 @@ class LocationController extends Controller
         Requests\Location\UpdateRequest $request
     ): JsonResponse {
 
+        $packageInfo = $this->packageInfo();
+
         $this->saveRevision($location);
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $location->modified_by_id = $user->id;
-        }
+        $location->modified_by_id = $user?->id;
 
         $location->update($validated);
 
-        return (new Resources\Location($location))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Location($location)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 }

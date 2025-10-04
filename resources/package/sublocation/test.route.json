@@ -1,0 +1,22 @@
+{
+    "class": "SublocationRouteTest",
+    "config": "playground-directory-api",
+    "extends": "",
+    "fqdn": "Tests/Feature/Playground/Directory/Api/SublocationRouteTest",
+    "model": "Sublocation",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "SublocationRouteTest",
+    "namespace": "Tests/Feature/Playground/Directory/Api",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-api-controller-model-user",
+    "uses": [],
+    "models": {
+        "Sublocation": "resources/configurations/playground-directory/model.sublocation.json"
+    },
+    "package_providers": []
+}

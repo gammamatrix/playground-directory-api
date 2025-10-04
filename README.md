@@ -2,20 +2,31 @@
 
 [![Playground CI Workflow](https://github.com/gammamatrix/playground-directory-api/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-directory-api/testing/develop/testdox.txt)
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-directory-api/testing/develop/coverage.svg)](tests)
-[![PHPStan Level 9](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L120)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)](.github/workflows/ci.yml#L128)
 
-The Playground: Directory API package.
+Playground: Directory API
+
+This package provides an API without UI for interacting with the [Playground: Directory](https://github.com/gammamatrix/playground-directory), a model package for Laravel.
+
+If you need a JSON API with a UI, then have a look at [Playground: Directory Resource.](https://github.com/gammamatrix/playground-directory-resource)
 
 ## Documentation
 
-### Swagger
+Read more on using [Playground: Directory API at Read the Docs: Playground Documentation](https://gammamatrix-playground.readthedocs.io/en/develop/built-components/directory.html)
 
-This application provides Swagger documentation: [swagger.json](swagger.json).
+### Postman
+
+A postman collection is provided in the repository: [postman-playground-directory-api.json.](postman-playground-directory-api.json)
+- This same collection is viewable on the [.]()
+
+### OpenAPI
+
+This application provides OpenAPI documentation: [openapi.yaml](openapi.yaml).
 - The endpoint models support locks, trash with force delete, restoring, revisions and more.
 - Index endpoints support advanced query filtering.
 
-Swagger API Documentation is built with npm.
-- npm is only needed to generate documentation and is not needed to operate the CMS API.
+OpenAPI API Documentation is built with npm using Redocly.
+- npm is only needed to generate documentation and is not needed to operate the Playground: Directory API API.
 
 See [package.json](package.json) requirements.
 
@@ -25,15 +36,14 @@ Install npm.
 npm install
 ```
 
-Build the documentation to generate the [swagger.json](swagger.json) configuration.
+Build the documentation to generate the [openapi.yaml](openapi.yaml) configuration.
 
 ```sh
 npm run docs
 ```
 
 Documentation
-- Preview [swagger.json on the Swagger Editor UI.](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gammamatrix/playground-directory-api/develop/swagger.json)
-- Preview [swagger.json on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-directory-api/develop/swagger.json)
+- Preview [openapi.yaml on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-directory-api/develop/openapi.yaml)
 
 ## Installation
 
@@ -43,16 +53,40 @@ You can install the package via composer:
 composer require gammamatrix/playground-directory-api
 ```
 
+## `artisan about`
+
+Playground provides information in the `artisan about` command.
+
+<!-- <img src="resources/docs/artisan-about-playground-directory-api.png" alt="screenshot of artisan about command with Playground: Directory API."> -->
+
 ## Configuration
 
-All options are disabled by default.
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Playground\Directory\Api\ServiceProvider" --tag="playground-config"
+```
+
+All routes are enabled by default. They may be disabled via environment variable or the configuration.
 
 See the contents of the published config file: [config/playground-directory-api.php](config/playground-directory-api.php)
 
-You can publish the config file with:
+You can publish the routes file with:
 ```bash
-php artisan vendor:publish --provider=Playground\Directory\Api\ServiceProvider" --tag="playground-config"
+php artisan vendor:publish --provider="Playground\Directory\Api\ServiceProvider" --tag="playground-routes"
 ```
+- The routes while be published in a folder at `routes/playground-directory-api`
+
+### Environment Variables
+
+If you are unable or do not want to publish [configuration files for this package](config/playground-directory-api.php),
+you may override the options via system environment variables.
+
+Information on [environment variables is available on the wiki for this package](https://github.com/gammamatrix/playground-directory-api/wiki/Environment-Variables)
+
+## Migrations
+
+This package requires the migrations in [playground-directory](https://github.com/gammamatrix/playground-directory) a Laravel package.
 
 ## Cloc
 
@@ -62,29 +96,28 @@ composer cloc
 
 ```
 ➜  playground-directory-api git:(develop) ✗ composer cloc
-> cloc --exclude-dir=node_modules,output,vendor .
-     195 text files.
-     121 unique files.
-      76 files ignored.
+     209 text files.
+     202 unique files.
+      49 files ignored.
 
-github.com/AlDanial/cloc v 1.98  T=0.24 s (504.6 files/s, 98625.1 lines/s)
+github.com/AlDanial/cloc v 2.06  T=0.06 s (3167.2 files/s, 432312.6 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                             5              0              0          14524
-PHP                             81            689           1139           3883
-YAML                            28              5              0           3051
-XML                              3              0              7            215
-Markdown                         3             37              0             85
+JSON                            78              0              0          14954
+YAML                            30              5              0           6390
+PHP                             80            866           1211           3638
+XML                             10              0              7            302
+Markdown                         3             55              1            128
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                           121            734           1146          21770
+SUM:                           202            929           1219          25424
 -------------------------------------------------------------------------------
 ```
 
 ## PHPStan
 
-Tests at level 9 on:
+Tests at level 10 on:
 - `config/`
 - `lang/`
 - `routes/`
@@ -104,8 +137,19 @@ composer format
 
 ## Testing
 
+Run unit tests:
 ```sh
-composer test --parallel
+composer test
+```
+
+Run unit and feature tests:
+```sh
+composer test-dev
+```
+
+Run unit and feature tests in parallel:
+```sh
+composer test-parallel
 ```
 
 ## Changelog

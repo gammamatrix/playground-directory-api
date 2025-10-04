@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{sublocation}', [
         'as' => 'playground.directory.api.sublocations.show',
         'uses' => 'SublocationController@show',
-    ])->whereUuid('sublocation')->can('detail', 'sublocation');
+    ])->whereUuid('sublocation')->can('detail', 'sublocation')->withTrashed();
 
     Route::get('/{sublocation}/revisions', [
         'as' => 'playground.directory.api.sublocations.revisions',

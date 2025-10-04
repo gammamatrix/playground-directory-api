@@ -1,0 +1,23 @@
+{
+    "class": "TestCase",
+    "config": "playground-directory-api",
+    "extends": "",
+    "fqdn": "Tests/Feature/Playground/Directory/Api/Http/Controllers/TestCase",
+    "model": "",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "ControllerTestCase",
+    "namespace": "Tests/Feature/Playground/Directory/Api/Http/Controllers",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-api-controller-test-case",
+    "uses": [
+        "Playground/Test/Feature/Http/Controllers/Resource",
+        "Tests/Feature/Playground/Directory/Api/TestCase as BaseTestCase"
+    ],
+    "models": [],
+    "package_providers": []
+}

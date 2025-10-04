@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Directory\Api\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
 use Playground\Directory\Api\Http\Requests;
 use Playground\Directory\Api\Http\Resources;
 use Playground\Directory\Models\Sublocation;
@@ -46,14 +47,14 @@ class SublocationController extends Controller
         Requests\Sublocation\CreateRequest $request
     ): JsonResponse|Resources\Sublocation {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
+        $validated = $request->validated();
 
         $sublocation = new Sublocation($validated);
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -66,8 +67,11 @@ class SublocationController extends Controller
         Sublocation $sublocation,
         Requests\Sublocation\EditRequest $request
     ): JsonResponse|Resources\Sublocation {
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -108,7 +112,7 @@ class SublocationController extends Controller
         Requests\Sublocation\LockRequest $request
     ): JsonResponse|Resources\Sublocation {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
@@ -120,8 +124,8 @@ class SublocationController extends Controller
 
         $sublocation->save();
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -134,11 +138,20 @@ class SublocationController extends Controller
         Requests\Sublocation\IndexRequest $request
     ): JsonResponse|Resources\SublocationCollection {
 
-        $user = $request->user();
+        $packageInfo = $this->packageInfo();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = Sublocation::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Sublocation::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -172,7 +185,7 @@ class SublocationController extends Controller
 
         $paginator->appends($validated);
 
-        return (new Resources\SublocationCollection($paginator))->response($request);
+        return new Resources\SublocationCollection($paginator)->response($request);
     }
 
     /**
@@ -185,16 +198,16 @@ class SublocationController extends Controller
         Requests\Sublocation\RestoreRequest $request
     ): JsonResponse|Resources\Sublocation {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
-        if ($user?->id) {
-            $sublocation->modified_by_id = $user->id;
-        }
+        $sublocation->modified_by_id = $user?->id;
 
         $sublocation->restore();
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -207,6 +220,9 @@ class SublocationController extends Controller
         SublocationRevision $sublocation_revision,
         Requests\Sublocation\RestoreRevisionRequest $request
     ): JsonResponse|Resources\Sublocation {
+
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         /**
@@ -230,8 +246,8 @@ class SublocationController extends Controller
 
         $sublocation->save();
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -244,20 +260,11 @@ class SublocationController extends Controller
         SublocationRevision $sublocation_revision,
         Requests\Sublocation\ShowRevisionRequest $request
     ): JsonResponse|Resources\SublocationRevision {
-        $validated = $request->validated();
 
-        $user = $request->user();
+        $packageInfo = $this->packageInfo();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => $sublocation_revision->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
-        ];
-
-        return (new Resources\SublocationRevision($sublocation_revision))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\SublocationRevision($sublocation_revision)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -270,8 +277,20 @@ class SublocationController extends Controller
         Sublocation $sublocation,
         Requests\Sublocation\RevisionsRequest $request
     ): JsonResponse|Resources\SublocationRevisionCollection {
+
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
         $query = $sublocation->revisions();
@@ -307,8 +326,8 @@ class SublocationController extends Controller
 
         $paginator->appends($validated);
 
-        return (new Resources\SublocationRevisionCollection($paginator))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\SublocationRevisionCollection($paginator)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -317,7 +336,12 @@ class SublocationController extends Controller
      */
     public function saveRevision(Sublocation $sublocation): SublocationRevision
     {
-        $revision = new SublocationRevision($sublocation->toArray());
+        /**
+         * @var array<string, mixed> $data
+         */
+        $data = $sublocation->toArray();
+
+        $revision = new SublocationRevision($data);
 
         $revision->created_by_id = $sublocation->created_by_id;
         $revision->modified_by_id = $sublocation->modified_by_id;
@@ -345,8 +369,11 @@ class SublocationController extends Controller
         Sublocation $sublocation,
         Requests\Sublocation\ShowRequest $request
     ): JsonResponse|Resources\Sublocation {
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -358,6 +385,9 @@ class SublocationController extends Controller
     public function store(
         Requests\Sublocation\StoreRequest $request
     ): Response|JsonResponse|Resources\Sublocation {
+
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -368,8 +398,8 @@ class SublocationController extends Controller
 
         $sublocation->save();
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request)->setStatusCode(201);
     }
 
@@ -383,20 +413,18 @@ class SublocationController extends Controller
         Requests\Sublocation\UnlockRequest $request
     ): JsonResponse|Resources\Sublocation {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
         $sublocation->locked = false;
 
-        if ($user?->id) {
-            $sublocation->modified_by_id = $user->id;
-        }
+        $sublocation->modified_by_id = $user?->id;
 
         $sublocation->save();
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -410,20 +438,20 @@ class SublocationController extends Controller
         Requests\Sublocation\UpdateRequest $request
     ): JsonResponse {
 
+        $packageInfo = $this->packageInfo();
+
         $this->saveRevision($sublocation);
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $sublocation->modified_by_id = $user->id;
-        }
+        $sublocation->modified_by_id = $user?->id;
 
         $sublocation->update($validated);
 
-        return (new Resources\Sublocation($sublocation))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\Sublocation($sublocation)->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 }

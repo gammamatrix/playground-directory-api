@@ -1,0 +1,23 @@
+{
+    "class": "EditRequestTest",
+    "config": "playground-directory-api",
+    "extends": "RequestCase",
+    "fqdn": "Tests/Unit/Playground/Directory/Api/EditRequestTest",
+    "model": "Location",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "EditRequestTest",
+    "namespace": "Tests/Unit/Playground/Directory/Api",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "unit",
+    "type": "playground-request-model",
+    "uses": [
+        "Tests/Unit/Playground/Directory/Api/PackageProviders",
+        "Playground/Test/Unit/Http/Requests/RequestCase"
+    ],
+    "models": [],
+    "package_providers": []
+}

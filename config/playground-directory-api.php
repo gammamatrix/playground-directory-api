@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -90,7 +91,7 @@ return [
     */
 
     'revisions' => [
-        'optional' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_OPTIONAL', false),
+        'optional' => (bool) env('PLAYGROUND_DIRECTORY_API_REVISIONS_OPTIONAL', false),
         'locations' => (bool) env('PLAYGROUND_DIRECTORY_API_REVISIONS_LOCATIONS', true),
         'sublocations' => (bool) env('PLAYGROUND_DIRECTORY_API_REVISIONS_SUBLOCATIONS', true),
     ],
@@ -104,8 +105,8 @@ return [
     */
 
     'routes' => [
-        'locations' => (bool) env('PLAYGROUND_DIRECTORY_API_LOCATIONS', true),
-        'sublocations' => (bool) env('PLAYGROUND_DIRECTORY_API_SUBLOCATIONS', true),
+        'locations' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_LOCATIONS', true),
+        'sublocations' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_SUBLOCATIONS', true),
     ],
 
     /*

@@ -1,0 +1,20 @@
+{
+    "class": "InstanceTest",
+    "config": "playground-directory-api",
+    "extends": "",
+    "fqdn": "Tests/Unit/Playground/Directory/Api/ServiceProvider/InstanceTest",
+    "model": "",
+    "model_fqdn": "",
+    "module": "Directory",
+    "module_slug": "directory",
+    "name": "InstanceTest",
+    "namespace": "Tests/Unit/Playground/Directory/Api/ServiceProvider",
+    "organization": "Playground",
+    "package": "playground-directory-api",
+    "playground": true,
+    "suite": "unit",
+    "type": "playground-service-provider-policies",
+    "uses": [],
+    "models": [],
+    "package_providers": []
+}
