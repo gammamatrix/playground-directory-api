@@ -5,6 +5,14 @@
  */
 
 declare(strict_types=1);
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+use Playground\Directory\Api\Policies\LocationPolicy;
+use Playground\Directory\Api\Policies\SublocationPolicy;
+use Playground\Directory\Models\Location;
+use Playground\Directory\Models\LocationRevision;
+use Playground\Directory\Models\Sublocation;
+use Playground\Directory\Models\SublocationRevision;
 
 /**
  * Playground: Directory API Configuration and Environment Variables
@@ -50,20 +58,20 @@ return [
     'middleware' => [
         'default' => env('PLAYGROUND_DIRECTORY_API_MIDDLEWARE_DEFAULT', [
             'web',
-            Illuminate\Routing\Middleware\SubstituteBindings::class,
+            SubstituteBindings::class,
             'auth:sanctum',
-            Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            EnsureFrontendRequestsAreStateful::class,
         ]),
         'auth' => env('PLAYGROUND_DIRECTORY_API_MIDDLEWARE_AUTH', [
             'web',
-            Illuminate\Routing\Middleware\SubstituteBindings::class,
+            SubstituteBindings::class,
             'auth:sanctum',
-            Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            EnsureFrontendRequestsAreStateful::class,
         ]),
         'guest' => env('PLAYGROUND_DIRECTORY_API_MIDDLEWARE_GUEST', [
             'web',
-            Illuminate\Routing\Middleware\SubstituteBindings::class,
-            Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            SubstituteBindings::class,
+            EnsureFrontendRequestsAreStateful::class,
         ]),
     ],
 
@@ -76,10 +84,10 @@ return [
     */
 
     'policies' => [
-        Playground\Directory\Models\Location::class => Playground\Directory\Api\Policies\LocationPolicy::class,
-        Playground\Directory\Models\LocationRevision::class => Playground\Directory\Api\Policies\LocationPolicy::class,
-        Playground\Directory\Models\Sublocation::class => Playground\Directory\Api\Policies\SublocationPolicy::class,
-        Playground\Directory\Models\SublocationRevision::class => Playground\Directory\Api\Policies\SublocationPolicy::class,
+        Location::class => LocationPolicy::class,
+        LocationRevision::class => LocationPolicy::class,
+        Sublocation::class => SublocationPolicy::class,
+        SublocationRevision::class => SublocationPolicy::class,
     ],
 
     /*

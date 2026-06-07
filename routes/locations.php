@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Playground\Directory\Models\Location;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,19 +37,19 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.directory.api.locations',
         'uses' => 'LocationController@index',
-    ])->can('index', Playground\Directory\Models\Location::class);
+    ])->can('index', Location::class);
 
     Route::post('/index', [
         'as' => 'playground.directory.api.locations.index',
         'uses' => 'LocationController@index',
-    ])->can('index', Playground\Directory\Models\Location::class);
+    ])->can('index', Location::class);
 
     // UI
 
     Route::get('/create', [
         'as' => 'playground.directory.api.locations.create',
         'uses' => 'LocationController@create',
-    ])->can('create', Playground\Directory\Models\Location::class);
+    ])->can('create', Location::class);
 
     Route::get('/edit/{location}', [
         'as' => 'playground.directory.api.locations.edit',
@@ -109,7 +110,7 @@ Route::group([
     Route::post('/', [
         'as' => 'playground.directory.api.locations.post',
         'uses' => 'LocationController@store',
-    ])->can('store', Playground\Directory\Models\Location::class);
+    ])->can('store', Location::class);
 
     // Route::put('/', [
     //     'as' => 'playground.directory.api.locations.put',
