@@ -21,13 +21,11 @@
         "gammamatrix/playground": "*",
         "gammamatrix/playground-auth": "*",
         "gammamatrix/playground-http": "*",
-        "gammamatrix/playground-directory": "*",
-        "illuminate/support": "^13.0"
+        "gammamatrix/playground-directory": "*"
     },
     "require-dev": {
         "gammamatrix/playground-test": "*",
-        "laravel/sanctum": "^4.0",
-        "illuminate/testing": "^13.0"
+        "laravel/sanctum": "^4.0"
     },
     "autoload": {
         "psr-4": {
