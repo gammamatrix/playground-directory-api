@@ -26,19 +26,19 @@ This application provides OpenAPI documentation: [openapi.yaml](openapi.yaml).
 - Index endpoints support advanced query filtering.
 
 OpenAPI API Documentation is built with npm using Redocly.
-- npm is only needed to generate documentation and is not needed to operate the Playground: Directory API API.
+- npm is only needed to generate documentation and is not needed to operate the Playground: Directory API.
 
 See [package.json](package.json) requirements.
 
 Install npm.
 
-```sh
+```shell
 npm install
 ```
 
 Build the documentation to generate the [openapi.yaml](openapi.yaml) configuration.
 
-```sh
+```shell
 npm run docs
 ```
 
@@ -49,7 +49,7 @@ Documentation
 
 You can install the package via composer:
 
-```bash
+```shell
 composer require gammamatrix/playground-directory-api
 ```
 
@@ -63,7 +63,7 @@ Playground provides information in the `artisan about` command.
 
 You can publish the config file with:
 
-```bash
+```shell
 php artisan vendor:publish --provider="Playground\Directory\Api\ServiceProvider" --tag="playground-config"
 ```
 
@@ -72,7 +72,7 @@ All routes are enabled by default. They may be disabled via environment variable
 See the contents of the published config file: [config/playground-directory-api.php](config/playground-directory-api.php)
 
 You can publish the routes file with:
-```bash
+```shell
 php artisan vendor:publish --provider="Playground\Directory\Api\ServiceProvider" --tag="playground-routes"
 ```
 - The routes while be published in a folder at `routes/playground-directory-api`
@@ -90,28 +90,22 @@ This package requires the migrations in [playground-directory](https://github.co
 
 ## Cloc
 
-```sh
+```shell
 composer cloc
 ```
 
-```
-➜  playground-directory-api git:(develop) ✗ composer cloc
-     209 text files.
-     202 unique files.
-      49 files ignored.
-
-github.com/AlDanial/cloc v 2.06  T=0.06 s (3167.2 files/s, 432312.6 lines/s)
+```terminaloutput
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                            78              0              0          14954
-YAML                            30              5              0           6390
-PHP                             80            866           1211           3638
-XML                             10              0              7            302
-Markdown                         3             55              1            128
+PHP                             81            873           1270           3783
+JSON                            79              0              0           3564
+YAML                            29              4              0           2997
+XML                              3              0              7            215
+Markdown                         3             54              1            111
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                           202            929           1219          25424
+SUM:                           196            934           1278          10682
 -------------------------------------------------------------------------------
 ```
 
@@ -125,30 +119,30 @@ Tests at level 10 on:
 - `tests/Feature/`
 - `tests/Unit/`
 
-```sh
+```shell
 composer analyse
 ```
 
 ## Coding Standards
 
-```sh
+```shell
 composer format
 ```
 
 ## Testing
 
 Run unit tests:
-```sh
+```shell
 composer test
 ```
 
 Run unit and feature tests:
-```sh
+```shell
 composer test-dev
 ```
 
 Run unit and feature tests in parallel:
-```sh
+```shell
 composer test-parallel
 ```
 

@@ -15,7 +15,7 @@ use Playground\Directory\Models\LocationRevision;
 /**
  * \Tests\Feature\Playground\Directory\Api\Http\Controllers\LocationTestCase
  */
-class LocationTestCase extends TestCase
+class LocationTestCase extends PlaygroundCase
 {
     public string $fqdn = Location::class;
 
@@ -59,17 +59,33 @@ class LocationTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'location',
+        'model_camels' => 'locations',
+        'model_kebab' => 'location',
+        'model_kebabs' => 'locations',
+        'model_lower' => 'location',
+        'model_lowers' => 'locations',
         'model_label' => 'Location',
         'model_label_plural' => 'Locations',
+        'model_labels' => 'Locations',
         'model_route' => 'playground.directory.api.locations',
+        'model_route_param' => 'location',
         'model_slug' => 'location',
+        'model_slugs' => 'locations',
         'model_slug_plural' => 'locations',
+        'model_snake' => 'location',
+        'model_snakes' => 'locations',
+        'model_studly' => 'Location',
+        'model_studlies' => 'Locations',
         'model_variable' => 'location',
+        'model_variables' => 'locations',
         'model_variable_plural' => 'locations',
         'module_label' => 'Directory',
         'module_label_plural' => 'Directories',
+        'module_labels' => 'Directories',
         'module_route' => 'playground.directory.api',
         'module_slug' => 'directory',
+        'module_slugs' => 'directories',
         'privilege' => 'playground-directory-api:location',
         'table' => 'directory_locations',
     ];
@@ -97,8 +113,8 @@ class LocationTestCase extends TestCase
         'postponed_at',
         'published_at',
         'released_at',
-        'resumed_at',
         'resolved_at',
+        'resumed_at',
         'suspended_at',
         'timer_end_at',
         'timer_start_at',
@@ -156,6 +172,7 @@ class LocationTestCase extends TestCase
         'introduction',
         'content',
         'summary',
+        'email',
         'phone',
         'icon',
         'image',

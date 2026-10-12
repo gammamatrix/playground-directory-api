@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Contact
+  summary: 'Create a contact form.'
+  operationId: create_contact
+  responses:
+    200:
+      description: 'The create contact information.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../models/contact.yml
+              meta:
+                type: object
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden

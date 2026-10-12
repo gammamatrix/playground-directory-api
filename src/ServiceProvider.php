@@ -50,12 +50,12 @@ class ServiceProvider extends AuthServiceProvider
          *        >,
          *        revisions: array{
          *            options: bool,
+         *            contacts: bool,
          *            locations: bool,
-         *            sublocations: bool,
          *        },
          *        routes: array{
+         *             contacts: bool,
          *             locations: bool,
-         *             sublocations: bool,
          *        },
          *        abilities: array<string, string[]>,
          *    } $config
@@ -152,11 +152,11 @@ class ServiceProvider extends AuthServiceProvider
      */
     public function routes(array $config): void
     {
+        if (! empty($config['contacts'])) {
+            $this->loadRoutesFrom(dirname(__DIR__).'/routes/contacts.php');
+        }
         if (! empty($config['locations'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/locations.php');
-        }
-        if (! empty($config['sublocations'])) {
-            $this->loadRoutesFrom(dirname(__DIR__).'/routes/sublocations.php');
         }
     }
 
@@ -183,8 +183,8 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=yellow;options=bold>Middleware</> default' => ! empty($middleware['default']) ? sprintf('%s', json_encode($middleware['default'])) : '',
             '<fg=yellow;options=bold>Middleware</> guest' => ! empty($middleware['guest']) ? sprintf('%s', json_encode($middleware['guest'])) : '',
 
+            '<fg=red;options=bold>Route</> contacts' => ! empty($routes['contacts']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> locations' => ! empty($routes['locations']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=red;options=bold>Route</> sublocations' => ! empty($routes['sublocations']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
 
             'Package' => $this->package,
             'Version' => ServiceProvider::VERSION,
