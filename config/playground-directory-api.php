@@ -11,10 +11,14 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Playground\Auth\Policies\Policy;
 use Playground\Directory\Api\Policies\ContactPolicy;
 use Playground\Directory\Api\Policies\LocationPolicy;
+use Playground\Directory\Api\Policies\TaggedPolicy;
+use Playground\Directory\Api\Policies\TagPolicy;
 use Playground\Directory\Models\Contact;
 use Playground\Directory\Models\ContactRevision;
 use Playground\Directory\Models\Location;
 use Playground\Directory\Models\LocationRevision;
+use Playground\Directory\Models\Tag;
+use Playground\Directory\Models\Tagged;
 
 /**
  * Playground: Directory API Configuration and Environment Variables
@@ -46,6 +50,8 @@ use Playground\Directory\Models\LocationRevision;
  *       routes: array{
  *           contacts: bool,
  *           locations: bool,
+ *           tags: bool,
+ *           tagged: bool,
  *       },
  *       cache: array{
  *           enable: bool,
@@ -148,6 +154,8 @@ return [
         ContactRevision::class => ContactPolicy::class,
         Location::class => LocationPolicy::class,
         LocationRevision::class => LocationPolicy::class,
+        Tag::class => TagPolicy::class,
+        Tagged::class => TaggedPolicy::class,
     ],
 
     /*
@@ -175,6 +183,8 @@ return [
     'routes' => [
         'contacts' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_CONTACTS', true),
         'locations' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_LOCATIONS', true),
+        'tags' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_TAGS', true),
+        'tagged' => (bool) env('PLAYGROUND_DIRECTORY_API_ROUTES_TAGGED', true),
     ],
 
     /*
@@ -192,12 +202,18 @@ return [
         'manager' => [
             'playground-directory-api:contact:*',
             'playground-directory-api:location:*',
+            'playground-directory-api:tag:*',
+            'playground-directory-api:tagged:*',
         ],
         'user' => [
             'playground-directory-api:contact:view',
             'playground-directory-api:contact:viewAny',
             'playground-directory-api:location:view',
             'playground-directory-api:location:viewAny',
+            'playground-directory-api:tag:view',
+            'playground-directory-api:tag:viewAny',
+            'playground-directory-api:tagged:view',
+            'playground-directory-api:tagged:viewAny',
         ],
     ],
 ];

@@ -1,7 +1,7 @@
 {
     "class": "LocationTestCase",
     "config": "playground-directory-api",
-    "extends": "PlaygroundCase",
+    "extends": "RevisionTestCase",
     "fqdn": "Tests/Feature/Playground/Directory/Api/Http/Controllers/LocationTestCase",
     "model": "Location",
     "model_fqdn": "Playground/Directory/Models/Location",

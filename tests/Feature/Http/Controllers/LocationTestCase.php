@@ -15,7 +15,7 @@ use Playground\Directory\Models\LocationRevision;
 /**
  * \Tests\Feature\Playground\Directory\Api\Http\Controllers\LocationTestCase
  */
-class LocationTestCase extends PlaygroundCase
+class LocationTestCase extends RevisionTestCase
 {
     public string $fqdn = Location::class;
 

@@ -26,6 +26,9 @@ tags:
   -
     name: Location
     description: 'Manage locations in storage.'
+  -
+    name: Tag
+    description: 'Manage tags in storage.'
 paths:
   '/api/directory/contacts/{id}':
     $ref: paths/contacts/id.yml
@@ -63,6 +66,20 @@ paths:
     $ref: paths/locations/create.yml
   '/api/directory/locations/edit/{id}':
     $ref: paths/locations/edit.yml
+  '/api/directory/tags/{id}':
+    $ref: paths/tags/id.yml
+  /api/directory/tags:
+    $ref: paths/tags/index.yml
+  /api/directory/tags/index:
+    $ref: paths/tags/index-form.yml
+  '/api/directory/tags/lock/{id}':
+    $ref: paths/tags/lock.yml
+  '/api/directory/tags/restore/{id}':
+    $ref: paths/tags/restore.yml
+  /api/directory/tags/create:
+    $ref: paths/tags/create.yml
+  '/api/directory/tags/edit/{id}':
+    $ref: paths/tags/edit.yml
 components:
   schemas:
     Contact:
@@ -73,3 +90,5 @@ components:
       $ref: models/location.yml
     LocationRevision:
       $ref: models/location-revision.yml
+    Tag:
+      $ref: models/tag.yml

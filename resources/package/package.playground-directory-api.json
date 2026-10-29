@@ -13,7 +13,7 @@
     "organization": "Playground",
     "organization_email": "jeremy.postlethwaite@gmail.com",
     "package": "playground-directory-api",
-    "recipe": "",
+    "recipe": "directory",
     "withBlades": false,
     "withControllers": true,
     "withFactories": false,

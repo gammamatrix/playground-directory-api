@@ -15,7 +15,7 @@ use Playground\Directory\Models\ContactRevision;
 /**
  * \Tests\Feature\Playground\Directory\Api\Http\Controllers\ContactTestCase
  */
-class ContactTestCase extends PlaygroundCase
+class ContactTestCase extends RevisionTestCase
 {
     public string $fqdn = Contact::class;
 

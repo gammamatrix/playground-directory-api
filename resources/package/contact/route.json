@@ -7,7 +7,7 @@
     "module_labels": "Directories",
     "module_slug": "directory",
     "module_slugs": "directories",
-    "name": "Contact",
+    "name": "contact",
     "namespace": "Playground/Directory/Api",
     "organization": "Playground",
     "package": "playground-directory-api",
