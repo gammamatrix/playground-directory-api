@@ -1,7 +1,7 @@
 {
     "class": "RevisionTestCase",
     "config": "playground-directory-api",
-    "extends": "",
+    "extends": "PlaygroundCase",
     "fqdn": "Tests/Feature/Playground/Directory/Api/Http/Controllers/RevisionTestCase",
     "model": "",
     "model_fqdn": "",
