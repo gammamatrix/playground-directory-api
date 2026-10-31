@@ -53,6 +53,7 @@
     "privilege": "playground-directory-api",
     "route": "playground.directory.api",
     "view": "",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {
